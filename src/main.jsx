@@ -1,12 +1,22 @@
 import React from "react";
+import Root from "./routes/root";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+import ErrorPage from "./error-page";
+import Contact from "./routes/contact";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/contacts/:contactId",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
 
